@@ -4,7 +4,6 @@ import { Repository } from 'typeorm'
 import { CreateAccountInput } from './dto/create-account.dto'
 import { LoginInput } from './dto/login.dto'
 import { User } from './entities/user.entity'
-import * as jwt from 'jsonwebtoken'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '../jwt/jwt.service'
 
@@ -53,7 +52,7 @@ export class UsersService {
           error: '잘못된 비밀번호입니다'
         }
       }
-      const token = this.jwtService.sign({ id: user.id }) 
+      const token = this.jwtService.sign({ id: user.id })
       return {
         ok: true,
         token
